@@ -6,10 +6,15 @@ from utils import BATCH_SIZE
 import time
 from db.utils import get_db
 from db.crud.realty import save_realty
+from notifications import Notification
+
+notification = Notification()
 
 
 def main():
+    notification.telegram('SCRAP RUN STARTED')
     flat_ids = get_flat_ids()
+    notification.telegram(f'Got {len(flat_ids)} flat ids')
     for i in range(0, len(flat_ids), BATCH_SIZE):
         session = get_db()
         try:
@@ -22,12 +27,15 @@ def main():
                     realty=dimria_db_model,
                     session=session
                 )
+                notification.telegram(f'Flat with id {flat_id} saved')
                 time.sleep(2)
 
         except Exception as e:
+            notification.telegram(f'Error while saving flat with id {flat_id}')
             print(e)
             session.rollback()
         finally:
+            notification.telegram(f'Saved {len(batch)} flats')
             session.commit()
             session.close()
 

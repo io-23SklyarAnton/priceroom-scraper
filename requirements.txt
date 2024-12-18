@@ -4,10 +4,12 @@ Faker==33.1.0
 greenlet==3.1.1
 idna==3.10
 psycopg2-binary==2.9.10
+pyTelegramBotAPI==4.25.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 requests==2.32.3
 six==1.17.0
 SQLAlchemy==2.0.36
+telebot==0.0.5
 typing_extensions==4.12.2
 urllib3==2.2.3

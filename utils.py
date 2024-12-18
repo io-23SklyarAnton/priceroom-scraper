@@ -1,10 +1,20 @@
+import os
 from enum import Enum
 from urllib.parse import urlencode
 from dataclasses import dataclass
 from faker import Faker
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_FLAT_ID_URL = "https://dom.ria.com/node/searchEngine/v2/"
 BATCH_SIZE = 1000
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+
+ANTON_TELEGRAM_ID = 755771092
+TELEGRAM_USERS_TO_NOTIFY = (
+    ANTON_TELEGRAM_ID,
+)
 
 
 class RegionId(int, Enum):
