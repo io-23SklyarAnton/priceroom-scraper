@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from faker import Faker
 
 BASE_FLAT_ID_URL = "https://dom.ria.com/node/searchEngine/v2/"
+BATCH_SIZE = 1000
 
 
 class RegionId(int, Enum):

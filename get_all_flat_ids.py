@@ -19,13 +19,13 @@ def get_flat_ids(
             break
 
         data = response.json()
-        if not data:
+        if not data.get('items'):
             break
 
         try:
             flat_ids.extend(data['items'])
             page += 1
-            time.sleep(2)
+            time.sleep(1)
         except KeyError:
             break
 
