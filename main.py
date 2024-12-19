@@ -29,6 +29,7 @@ def main():
                 )
                 notification.telegram(f'Flat with id {flat_id} saved')
                 time.sleep(2)
+            session.commit()
 
         except Exception as e:
             notification.telegram(f'Error while saving flat with id {flat_id}')
@@ -36,7 +37,6 @@ def main():
             session.rollback()
         finally:
             notification.telegram(f'Saved {len(batch)} flats')
-            session.commit()
             session.close()
 
 
