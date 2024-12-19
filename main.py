@@ -27,12 +27,12 @@ def main():
                     realty=dimria_db_model,
                     session=session
                 )
+                session.commit()
                 notification.telegram(f'Flat with id {flat_id} saved')
                 time.sleep(2)
-            session.commit()
 
         except Exception as e:
-            notification.telegram(f'Error while saving flat with id {flat_id}')
+            notification.telegram(f'Error while saving flat with id {flat_id} {e}')
             print(e)
             session.rollback()
         finally:
